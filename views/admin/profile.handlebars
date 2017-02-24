@@ -1,0 +1,159 @@
+  <div id="navbar-dashboard">
+  	<div class="navbar-right" id="nav-profile">
+  	  <div>
+       <div id="result"></div>
+  	  	 <ul class="nav">
+  	  	 	<li class="dropdown" >
+
+  	  	 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  	  	 			 <img src="images/administrator.png" height="30px" width="30px" > 
+                     <strong>{{username}}</strong> 
+                     <b class="caret"></b>
+  	  	 		</a>
+  	  	 		<ul class="dropdown-menu" id="drop-menu-prof">
+  	  	 			<div class="col-md-12" id="prof-img">
+  	  	 			 <img src="images/administrator.png" height="80px" width="80px" > 
+                     <strong>{{username}}</strong> 
+  	  	 			</div>
+  	  	 			<div class="col-md-12" id="menu-controls">
+  	  	 				<a href="#" class="btn btn-default navbar-left">Profile</a>
+  	  	 				<a href="logout.php" class="btn btn-default navbar-right">Sign Out</a>
+  	  	 			</div>
+  	  	 		</ul>
+  	  	 	</li>
+  	  	 </ul>
+  	  </div>
+  	</div>
+  	</div>
+  </div>
+<div id="body">
+   <div class="container">
+   	  <div class="row">
+   	  	 <div class="col-md-2" id="navigation">
+           <div class="container"  >
+   	         <div class="row"  >
+              <div class="col-md-12" id="profile-item" >
+               <img src="images/administrator.png" height="70px" width="70px" > 
+               <strong>{{username}}</strong> 
+  	          </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-2" id="navigation-links">
+     	 	 <div id="nav">
+     	 	 	<ul class="nav">
+            <li class="position"><a href="index.php" title="Dashboard" ><i class="fa fa-home fa-2x"></i><br>Dashboard</a></li>
+            <li class="position"><a href="profile.php" title="Profile"><i class="fa fa-user fa-2x"></i><br>Profile</a></li>
+          <li class="position "><a href="users.php" title="Users"><i class="fa fa-user fa-2x"></i><br>Users</a></li>
+          <li class="position"><a href="bookings.php" title="Bookings"><i class="fa fa-user fa-2x"></i><br>Bookings</a></li>
+          <li class="position"><a href="movieslist.php" title="movieslist"><i class="fa fa-search fa-2x"></i><br>Movieslist</a></li>
+      </ul>
+     	 	 </div>
+     	 </div>
+            </div>
+          </div> 
+        </div>
+   	  </div>
+   	  <div id="activity-items">
+   	  <div id="title-con">
+   	  	 <ol class="breadcrumb navbar-right">
+   	  	<li class="active"><a href="index.php">Home</a></li>
+   	  </ol>
+   	  <h2>Dashboard</h2>
+   	  </div>
+   	   	  <div class="row">
+          <h3>Administrator Profile</h3>
+     	       <div class="col-md-4">
+             {{!-- Admin profile image --}}
+               <br><br>
+               <br><br>
+               <button class="btn btn-default" id="add-btn">New User</button>
+             </div>
+             <div class="col-md-7 ">
+                <table class="table">
+                  <tbody>
+                    <tr><td><strong>Username</strong></td><td>{{username}}</td></tr>
+                    <tr><td><strong>Email</strong></td><td>{{email}}</td></tr>
+                    <tr><td><strong>Phone</strong></td><td>{{phone_no}}</td></tr>
+                    <tr><td><strong>Role</strong></td><td>{{role}}</td></tr>
+                  </tbody>
+               </table>
+               
+             </div>
+          </div>
+
+          <div class="row" id="add-user">
+              <button class="close" arial-hidden="true" id="close">&times</button>
+          
+             <div class="col-md-4">
+              {{!-- Administrator.png image --}}
+               <br><br>
+               
+             </div>
+             
+             <div class="col-md-7 ">
+             <form id="form" name="form" action="" method="POST">
+              
+              <div class="col-md-12">
+               <label>User Name:</label>
+                <input type="text" name="username" id="username" class="form-group form-control" required>
+              </div>
+              <div class="col-md-12">
+               <label>Email:</label>
+                <input id="email" type="text" name="email" class="form-group form-control" requiired>
+              </div>
+              <div class="col-md-12">
+               <label>Phone Number:</label>
+                <input type="text" id="phone" name="phone_no" class="form-group form-control" required>
+              </div>
+              <div class="col-md-12">
+                <label>Role:</label>
+                   <select class="form-control form-group" id="role" >
+                     <option>Add Role*</option>
+                     <option>Admin</option>
+                     <option>User</option>
+                   </select>
+              </div>
+              <div class="col-md-12">
+               <label>Password:</label>
+                <input type="password" id="password" name="password" class="form-group form-control" required>
+              </div>
+              <div class="col-md-12">
+               <label>Confirm Password:</label>
+                <input type="password" name="confirm" id="confirm" class="form-group form-control" required>
+              </div>
+            </form>
+               <div class="col-md-12">
+                    <button class="btn btn-primary" id="user">Add User</button>
+              </div>
+             </div>
+          </div>
+   	  </div>
+   </div>
+
+</div>
+   
+</body>
+
+<script type="text/javascript">
+  $('#add-btn').click(function(e){
+       e.preventDefault();
+       $('#add-user').fadeIn();
+   });
+  $('#close').click(function(e){
+       e.preventDefault();
+       $('#add-user').fadeOut();
+   });
+$('#user').click(function(e){
+  e.preventDefault();
+  $('#user').html('<i class="fa fa-2x fa-spinner fa-spin"></i>');
+   var username = $('#username').val();
+   var email = $('#email').val();
+   var phone = $('#phone').val();
+   var role  = $('#role').val();
+   var password = $('#password').val();
+   var confirm = $('#confirm').val();
+
+});
+
+</script>
+</html>

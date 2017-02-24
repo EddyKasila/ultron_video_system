@@ -1,0 +1,125 @@
+ <div class="result"></div>
+   <div class="container">
+
+   	  <div class="row">
+   	  	 <div class="col-md-2" id="navigation">
+           <div class="container"  >
+   	         <div class="row"  >
+              <div class="col-md-12" id="profile-item" >
+               <img src="images/administrator.png" height="70px" width="70px" > 
+               <strong>{{username}}</strong> 
+  	          </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-2" id="navigation-links">
+     	 	  <div id="nav">
+           <ul class="nav">
+            <li class="position"><a href="/admin/index" title="Dashboard" ><i class="fa fa-home fa-2x"></i><br>Dashboard</a></li>
+            <li class="position"><a href="/admin/profile" title="Profile"><i class="fa fa-user fa-2x"></i><br>Profile</a></li>
+          <li class="position "><a href="/admin/userlist" title="Users"><i class="fa fa-user fa-2x"></i><br>Users</a></li>
+          <li class="position"><a href="/admin/bookings" title="Booking"><i class="fa fa-user fa-2x"></i><br>Bookings</a></li>
+          <li class="position"><a href="/admin/movieslist" title="Forum"><i class="fa fa-search fa-2x"></i><br>Movies</a></li>
+      </ul>
+         </div>
+     	 </div>
+            </div>
+          </div> 
+        </div>
+   	  </div>
+   	  <div id="activity-items">
+   	  <div id="title-con">
+   	  	 <ol class="breadcrumb navbar-right">
+   	  	<li class="active"><a href="/admin/index">Home</a></li>
+   	  	<li ><a href="/admin/movieslist" >Movies</a></li>
+   	  </ol>
+   	  <h2>Dashboard</h2><h3>Movies</h3>
+   	  </div>
+   	   	 <div class="row">
+        <div class="col-md-2">
+        <button class="btn btn-default" id="add-movie" title="Add Movie"><i class="fa fa-video-camera"></i></button>
+        </div><br><br>
+          <div class=""> </div>
+
+     	      <div class="col-md-12" id="movie-table">
+              <table class="table">
+              <h3>List of Movies</h3>
+              {{#if err}}
+                  <th class="col-md-offset-4"><i class="fa fa-exclamation-triangle fa-2x"></i>No data found!</th>
+              {{else}}
+                <thead><th><strong>Id</strong></th><th><strong>Movie Title</strong></th><th><strong>Main Characters</strong></th><th><strong>Descrition</strong></th><th><strong>Movie Poster</strong></th><th>Cost</th></thead>
+                  {{#each movies as |movie|}} 
+                      <tbody>
+                        <tr><td>{{movie.id}}</td><td>{{movie.movie_title}}</td><td>{{movie.main_characters}}</td>
+                        <td>{{movie.escription}}</td><td>{{movie.movie_poster}}</td><td>{{movie.cost}}</td><td><a href="">Edit</a></td><td><a href="">Delete</a></td></tr>
+                      </tbody>
+                  {{/each}}
+              {{/if}}
+              </table>
+
+           </div>
+
+        </div>
+    
+          <div class="row" id="new-movie">
+              <button class="close" arial-hidden="true" id="close"></button>
+          
+             <div class="col-md-4">
+               {{!-- Upload movie poster --}}
+               <br><br>
+               <button class="btn btn-default">Upload Picure</button>
+             </div>
+             
+             <div class="col-md-7 ">
+             
+             <form id="form" name="form" action="" method="POST">
+              
+              <div class="col-md-12">
+               <label>Movie Title:</label>
+                <input type="text" name="movie_title" id="title" class="form-group form-control" >
+              </div>
+              <div class="col-md-12">
+               <label>Main Characters:</label>
+                <input type="text" name="main_characters" id="" class="form-group form-control" >
+              </div>
+              <div class="col-md-12">
+               <label>Cost:</label>
+                <input type="text" name="cost" id="cost" class="form-group form-control" >
+              </div>
+              
+              <div class="col-md-12">
+               <label>Description</label>
+                <textarea id="desc" class="form-group form-control" name="description" ></textarea>
+              </div>
+            </form>
+            <div class="col-md-12">
+                    <button class="btn btn-primary" id="movie-btn" name="submit">Add Movie</button>
+              </div>
+              
+             </div>
+          </div>
+   	  </div>
+   </div>
+
+</div>
+	</body>
+  <script type="text/javascript">
+   function delete_id(id)
+   {
+    if(confirm("Are you sure?"))
+    {
+      window.location.href = 'functions/deletem.php?delete_id='+id;
+    }
+   } 
+ </script>
+  <script>
+     $('#add-movie').click(function(){
+        $('#new-movie').fadeIn();
+        $('#movie-table').slideUp();
+         $('#add-movie').slideUp();
+     });
+     $('#close').click(function(){
+        $('#movie-table').slideDown();
+        $('#add-movie').fadeIn();
+        $('#new-movie').fadeOut();
+     });
+  </script>

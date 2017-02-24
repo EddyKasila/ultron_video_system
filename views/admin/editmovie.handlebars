@@ -1,0 +1,118 @@
+	  <div id="navbar-dashboard">
+  	<div class="navbar-right" id="nav-profile">
+  	  <div>
+      
+  	  	 <ul class="nav">
+  	  	 	<li class="dropdown" >
+
+  	  	 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  	  	 			 <img src="images/administrator.png" height="30px" width="30px" > 
+                     <strong>{{username}}</strong> 
+                     <b class="caret"></b>
+  	  	 		</a>
+  	  	 		<ul class="dropdown-menu" id="drop-menu-prof">
+  	  	 			<div class="col-md-12" id="prof-img">
+  	  	 			 <img src="images/administrator.png" height="80px" width="80px" > 
+                     <strong>{{username}}</strong> 
+  	  	 			</div>
+  	  	 			<div class="col-md-12" id="menu-controls">
+  	  	 				<a href="#" class="btn btn-default navbar-left">Profile</a>
+  	  	 				<a href="admin/logout" class="btn btn-default navbar-right">Sign Out</a>
+  	  	 			</div>
+  	  	 		</ul>
+  	  	 	</li>
+  	  	 </ul>
+  	  </div>
+  	</div>
+  	</div>
+  </div>
+<div id="body">
+ <div class="result"></div>
+   <div class="container">
+
+   	  <div class="row">
+   	  	 <div class="col-md-2" id="navigation">
+           <div class="container"  >
+   	         <div class="row"  >
+              <div class="col-md-12" id="profile-item" >
+               <img src="images/administrator.png" height="70px" width="70px" > 
+               <strong>{{username}}</strong> 
+  	          </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-2" id="navigation-links">
+     	 	  <div id="nav">
+           <ul class="nav">
+            <li class="position"><a href="admin/index" title="Dashboard" ><i class="fa fa-home fa-2x"></i><br>Dashboard</a></li>
+            <li class="position"><a href="admin/profile" title="Profile"><i class="fa fa-user fa-2x"></i><br>Profile</a></li>
+          <li class="position "><a href="admin/userlist" title="Users"><i class="fa fa-user fa-2x"></i><br>Users</a></li>
+          <li class="position"><a href="admin/bookings" title="Booking"><i class="fa fa-user fa-2x"></i><br>Bookings</a></li>
+          <li class="position"><a href="admin/movieslist" title="Forum"><i class="fa fa-search fa-2x"></i><br>Movies</a></li>
+      </ul>
+         </div>
+     	 </div>
+            </div>
+          </div> 
+        </div>
+   	  </div>
+   	  <div id="activity-items">
+   	  <div id="title-con">
+   	  	 <ol class="breadcrumb navbar-right">
+   	  	<li class="active"><a href="admin/index">Home</a></li>
+   	  	<li ><a href="admin/movieslist" >Movies</a></li>
+        <li ><a href="#" >Edit Movie</a></li>
+   	  </ol>
+   	  <h2>Dashboard</h2><h3>Movies</h3>
+   	  </div>
+        <div class="row">
+        <div class="col-md-4"><img src="images/administrator.png" width="250px" height="250px">
+        <br><br>
+        <button title="Change Piture" class="btn btn-default" id="chngimg"><i class="fa fa-camera"></i></button>
+        </div><br><br>
+          
+            <div class="col-md-7 " id="movie-table">
+              <table class="table">
+              <h3>Movie Details</h3>';
+    
+                {{#if err}}
+                    <div class=" alert alert-danger"><i class="fa fa-exclamation-triangle"></i>No data to be displayed. Please go back to movie lists</div></div>
+                {{else}}
+                   <form action="#" method="POST">
+                  <tbody>
+                  <tr><td><strong>Id:</strong></td><td><input name="id" id="id" value="{{id}}" class="form-control" type="text" disabled></td><tr>
+                          <tr><td><strong>Title:</strong></td><td><input name="movie_title" id="title" value="{{movie_title}}" class="form-control" type="text"></td><tr>
+                          <tr><td><strong>Cast:</strong></td><td><input class="form-control" value="{{main_characters}}" name="main_characters" id="cast" type="text"></td></tr>
+                          <tr><td><strong>Cost:</strong></td><td><input class="form-control" value="{{cost}}" name="cost" id="cost" type="text"></td></tr>
+                          <tr><td><strong>Description:</strong></td><td><textarea name="desc" id="desc" class="form-control" >{{description}}</textarea></td></tr>         
+                  </tbody></form> </table>
+                              <div class="col-md-3">
+                                <button class="btn btn-orange" id="editmovie">Save Changes</button>
+                              </div>
+                {{/if}}   
+             
+             <br><br> <br><br> 
+           </div>
+
+        </div>
+        
+   	  </div>
+   </div>
+
+</div>
+	</body>
+
+  <script>
+     $('#add-movie').click(function(){
+        $('#new-movie').fadeIn();
+        $('#movie-table').slideUp();
+         $('#add-movie').slideUp();
+     });
+     $('#close').click(function(){
+        $('#movie-table').slideDown();
+        $('#add-movie').fadeIn();
+        $('#new-movie').fadeOut();
+     });
+  </script>
+</html>
+
+

@@ -1,0 +1,58 @@
+<div class="container">
+   	  <div class="row">
+   	  	 <div class="col-md-2" id="navigation">
+           <div class="container"  >
+   	         <div class="row"  >
+              <div class="col-md-12" id="profile-item" >
+               <img src="images/administrator.png" height="70px" width="70px" > 
+               <strong>{{username}}</strong> 
+  	          </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-2" id="navigation-links">
+     	 	  <div id="nav">
+           <ul class="nav">
+            <li class="position"><a href="/admin/index" title="Dashboard" ><i class="fa fa-home fa-2x"></i><br>Dashboard</a></li>
+            <li class="position"><a href="/admin/profile" title="Profile"><i class="fa fa-user fa-2x"></i><br>Profile</a></li>
+          <li class="position "><a href="/admin/userlist" title="Users"><i class="fa fa-user fa-2x"></i><br>Users</a></li>
+          <li class="position"><a href="/admin/bookings" title="Booking"><i class="fa fa-user fa-2x"></i><br>Bookings</a></li>
+          <li class="position"><a href="/admin/movieslist" title="Movies"><i class="fa fa-search fa-2x"></i><br>Movies</a></li>
+      </ul>
+         </div>
+     	 </div>
+            </div>
+          </div> 
+        </div>
+   	  </div>
+   	  <div id="activity-items">
+   	  <div id="title-con">
+   	  	 <ol class="breadcrumb navbar-right">
+   	  	<li class="active"><a href="/admin/index">Home</a></li>
+   	  	<li class="active"><a href="/admin/users">Users</a></li>
+   	  </ol>
+   	  <h2>Dashboard</h2><p class="text-diable">Registered Users</p>
+   	  </div>
+   	   	<div class="row">
+     	   <div class="col-md-12" id="users-table">
+     		 <h1>Users</h1>
+     		 <hr>
+     		<table class="table">
+         
+        {{#if err}}
+            <th class="col-md-offset-4"><i class="fa fa-exclamation-triangle fa-2x"></i>No data found!</th>
+        {{else}}
+            <thead><th><strong>Id</strong></th><th><strong>Name</strong></th><th><strong>Email</strong></th><th><strong>Username</strong></th><th><strong>Phone Number</strong></th><th>Location</th></thead>
+        {{#each userlist as |user|}}
+            <tbody>
+              <tr><td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.email}}</td>
+              <td>{{user.username}}</td><td>{{user.phone_no}}</td><td>{{user.location}}</td><td><a href="">Edit</a></td><td><a href="">Delete</a></td></tr>
+            </tbody>
+        {{/each}}
+        {{/if}}
+
+        </table>
+
+     	   </div>
+        </div>
+   	  </div>
+   </div>

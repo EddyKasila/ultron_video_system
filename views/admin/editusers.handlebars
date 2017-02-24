@@ -1,0 +1,139 @@
+ <script>
+            $(function(){
+            $('#date').datepicker();
+            });
+</script>
+	  <div id="navbar-dashboard">
+  	<div class="navbar-right" id="nav-profile">
+   
+  	  <div>
+  	  	 <ul class="nav">
+  	  	 	<li class="dropdown" >
+
+  	  	 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  	  	 			 <img src="images/administrator.png" height="30px" width="30px" > 
+                     <strong>{{username}}</strong> 
+                     <b class="caret"></b>
+  	  	 		</a>
+  	  	 		<ul class="dropdown-menu" id="drop-menu-prof">
+  	  	 			<div class="col-md-12" id="prof-img">
+  	  	 			 <img src="images/administrator.png" height="80px" width="80px" > 
+                     <strong>{{username}}</strong> 
+  	  	 			</div>
+  	  	 			<div class="col-md-12" id="menu-controls">
+  	  	 				<a href="#" class="btn btn-default navbar-left">Profile</a>
+  	  	 				<a href="admin/logout" class="btn btn-default navbar-right">Sign Out</a>
+  	  	 			</div>
+  	  	 		</ul>
+  	  	 	</li>
+  	  	 </ul>
+  	  </div>
+  	</div>
+  	</div>
+  </div>
+<div id="body">
+ <div class="result"></div>
+   <div class="container">
+   	  <div class="row">
+   	  	 <div class="col-md-2" id="navigation">
+           <div class="container"  >
+   	         <div class="row"  >
+              <div class="col-md-12" id="profile-item" >
+               <img src="images/administrator.png" height="70px" width="70px" > 
+               <strong>{{username}}</strong> 
+  	          </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-2" id="navigation-links">
+     	 	 <div id="nav">
+     	 	  <ul class="nav">
+            <li class="position"><a href="admin/index" title="Dashboard" ><i class="fa fa-home fa-2x"></i><br>Dashboard</a></li>
+            <li class="position"><a href="admin/profile" title="Profile"><i class="fa fa-user fa-2x"></i><br>Profile</a></li>
+          <li class="position "><a href="admin/userslist" title="Users"><i class="fa fa-user fa-2x"></i><br>Users</a></li>
+          <li class="position"><a href="admin/bookings" title="Booking"><i class="fa fa-user fa-2x"></i><br>Bookings</a></li>
+          <li class="position"><a href="/admin/movieslist" title="Forum"><i class="fa fa-search fa-2x"></i><br>Movies</a></li>
+      </ul>
+     	 	 </div>
+     	 </div>
+            </div>
+          </div> 
+        </div>
+   	  </div>
+   	  <div id="activity-items">
+   	  <div id="title-con">
+   	  	 <ol class="breadcrumb navbar-right">
+   	  	<li class=""><a href="admin/index">Home</a></li>
+   	  	<li class="active"><a href="admin/userslist" >Users</a></li>
+        <li class=""><a href="admin/edit-user" >Edit User</a></li>
+   	  </ol>
+   	  <h2>Dashboard</h2><p class="text-diable">Registered Users</p>
+   	  </div>
+   	   	<div class="row">
+     	   <div class="col-md-12" id="users-table">
+     		 <h1>Profile</h1>
+    
+     		 <hr>
+
+     		  <div class="row">
+        
+           <div class="col-md-3">
+           
+           {{#if err}}
+              <img src='../uploads/no_image_user.png' height='220px' width='220px'>
+          {{else}}
+              <img src='../uploads/"{{imagepath}}"' height='220px' width='220px' id='img-style' title={{username}}>
+           {{/if}}
+
+             <br>
+             <br>
+           <p>Change Profile Picture</p>   
+           </div>
+           
+           <div class="col-md-8">
+                  
+                  <form action="#" method="POST" name="form" >
+                      <table class="table" id="edit-form">
+                            <caption>Basic Info</caption>
+         
+                         
+                          <tbody>
+                                <tr><td><strong>Id:</strong></td><td><input type="text" id="id" name="id" value="'.$id.'" disabled></td></tr> 
+                               <tr><td><strong>Name:</strong></td><td><input type="text" id="name" name="name" value="{{name}}"></td></tr>
+                              <tr><td><strong>Location:</strong></td><td><input type="text" id="location" name="location" value="{{location}}" id="date" ></td></tr>
+                              <tr><td><strong>Username:</strong></td><td><input type="text" id="username" name="username" required value="{{username}}"></td></tr>
+                            </tbody>
+
+                        </table>
+                        <table class="table" id="edit-form">
+                            <caption>Contact Info</caption>
+                                <tbody>
+                                <tr><td><strong>Email:</strong>></td><td><input type="text" id="email" name="email" required value="{{email}}"></td></tr>
+                              <tr><td><strong>Phone Number:</strong></td><td><input type="text" id="phone" name="phone" value="{{phone_no}}"></td></tr>
+                              
+                            </tbody> 
+
+                        </table>  
+                  </form>
+                  <div class="col-md-3">
+                           <button id="editbtn" class="btn btn-orange">Save Changes</button>
+                  </div>
+
+                 </div>
+                 <br><br>
+          </div>
+     	   </div>
+        </div>
+   	  </div>
+   </div>
+
+</div>
+   
+		
+	</body>
+<script type="text/javascript">
+   $("#close").click(function (){
+            $(".result").fadeOut();
+            location.reload();
+        });
+</script>
+</html>
