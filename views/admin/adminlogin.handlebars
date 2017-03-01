@@ -27,9 +27,7 @@
 	   	    		{{#if err}}
 	   	    		<div id="message">
 	   	    			<div style="padding: 5px;">
-	   	    				<div id="inner-message" class="alert">
-	   	    					<div class="alert alert-warning"><strong>Wrong username or password entered</strong></div>
-	   	    				</div>
+	   	    				<div class="alert alert-warning"><div class="col-md-offset-3"><i class="fa fa-exclamation-triangle"></i>Incorrect Username or Password  </div></div>
 	   	    			</div>
 	   	    		</div>
 	   	    		{{/if}}
@@ -41,3 +39,18 @@
 
 	</div>
 </div>
+
+
+
+        {{!-- if($username == $user && $password == $pass)
+        {
+             $_SESSION['username'] = $user;
+             $_SESSION['email'] = $email;
+             $_SESSION['role'] = $role;
+             
+            echo('<div class="alert alert-success"><div class="col-md-offset-4"><i class="fa fa-check-circle"></i>Login successful</div></div>');
+            echo ('<script>window.location="index.php";</script>');
+        }else {
+            echo('<div class="alert alert-warning"><div class="col-md-offset-3"><i class="fa fa-exclamation-triangle"></i>Incorrect Username or Password  </div></div>');
+        }
+      } --}}

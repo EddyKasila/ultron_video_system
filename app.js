@@ -276,36 +276,47 @@ connection.connect(function(err) {
 		});
 	});
 
-	app.get('/admin/movieslist', function(req, res) {
-		var query = 'select * from movies'
-
-		console.log(query)
-		connection.query(query, function(err, results) {
-			assert.ifError(err);
-			console.log('gotten the data', results);
-			res.render('admin/movieslist', {
-				movies: results
-			});
-		});
-		.post(function(req, res) {
-			console.log("received something", req.body)
-			req.body.movie_title = "movie"
-			req.body.imagepath = ""
-			var query = 'insert into movies (' +
-				Object.keys(req.body).map((key) => {
-					return key
-				}) +
-				') values (' +
-				Object.keys(req.body).map((key) => {
-					return JSON.stringify(req.body[key])
-				}) + ')'
+	app.route('/admin/movieslist')
+		.get(function(req, res) {
+			var query = 'select * from movies'
 
 			console.log(query)
 			connection.query(query, function(err, results) {
 				assert.ifError(err);
-				console.log('inserted the data', results);
+				console.log('gotten the data', results);
+				res.render('admin/movieslist', {
+					movies: results
+				});
 			});
-		})
+		});
+
+	app.post('/admin/movieslist', function(req, res) {
+		console.log("received something", req.body)
+		req.body.movie_title = "movie"
+		req.body.imagepath = "test.jpg"
+		var query = 'insert into movies (' +
+			Object.keys(req.body).map((key) => {
+				return key
+			}) +
+			') values (' +
+			Object.keys(req.body).map((key) => {
+				return JSON.stringify(req.body[key])
+			}) + ')'
+
+		console.log(query)
+		connection.query(query, function(err, results) {
+			assert.ifError(err);
+			console.log('inserted the data', results);
+			if (results[0]) {
+					res.redirect('movieslist')
+					movie: results[0]
+				} else {
+					console.log(results)
+					res.render('admin/movieslist', {
+						err: "the err"
+					})
+				}
+		});
 	});
 
 	app.get('/admin/userlist', function(req, res) {
@@ -342,6 +353,7 @@ connection.connect(function(err) {
 			connection.query(query, function(err, results) {
 				assert.ifError(err);
 				console.log('inserted the data', results);
+				
 			});
 		})
 
